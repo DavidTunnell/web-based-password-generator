@@ -1,22 +1,22 @@
-// Assign generate button to variable
+// Assign DOM elements to variables
 var generateBtn = document.querySelector("#generate");
+var numberOfCharactersText = document.getElementById('passwordLength');
+var userInput = document.getElementsByName("userInput");
+var passwordText = document.querySelector("#password");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input text area
 function writePassword() {
-    //get elements from HTML
-    var userInput = document.getElementsByName("userInput");
-    var passwordText = document.querySelector("#password");
-    //password options for clarity
-    var lowercase = userInput[0].checked;
-    var uppercase = userInput[1].checked;
-    var numeric = userInput[2].checked;
-    var specialCharacters = userInput[3].checked;
-    var numberOfCharacters = userInput[4].value;
+    //validate user entry
+    var validationArray = validateInput();
+    if (!validationArray[0]) {
+        alert(validationArray[1]);
+        return;
+    }
     //generate and assign password
-    var password = generatePassword(lowercase, uppercase, numeric, specialCharacters, numberOfCharacters);
+    var password = generatePassword(userInput[0].checked, userInput[1].checked, userInput[2].checked, userInput[3].checked, userInput[4].value);
     passwordText.value = password;
 }
 
@@ -54,8 +54,24 @@ function generatePassword(lowercase, uppercase, numeric, specialCharacters, numb
     return generatedPassword;
 }
 
-
-
-//THEN I choose a length of at least 8 characters and no more than 128 characters
-//THEN I choose lowercase, uppercase, numeric, and/or special characters
-//THEN my input should be validated and at least one character type should be selected
+function validateInput() {
+    var isValid = true;
+    var errorMessage = "";
+    var isChecked = false;
+    //check that at least one checkbox is checked
+    for (let i = 0; i < userInput.length; i++) {
+        if (userInput[i].checked) {
+            isChecked = true;
+        }
+    }
+    if (!isChecked) {
+        errorMessage += "Select at least one checkbox option. ";
+        isValid = false;
+    }
+    //check that password length input is between 8-128 characters
+    if (!numberOfCharactersText.checkValidity()) {
+        errorMessage += "Select a character value between 8 and 128.";
+        isValid = false;
+    }
+    return [isValid, errorMessage];
+}

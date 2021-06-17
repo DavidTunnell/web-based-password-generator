@@ -17,12 +17,19 @@
         <div class="card">
             <div class="card-header">
                 <h2>Password Options</h2>
-                <input type="checkbox" name="userInput" value="lowercase">Lowercase<br>
-                <input type="checkbox" name="userInput" value="uppercase">Uppercase<br>
-                <input type="checkbox" name="userInput" value="numeric">Numeric<br>
-                <input type="checkbox" name="userInput" value="specialCharacters">Special Characters<br>
-                <label for="numOfCharacters">Number of Characters</label>
-                <input id="passwordLength" type="number" name="userInput" type="number" min="8" max="128" step="1" placeholder="8 - 128 characters">
+                <div class="user-entry">
+                    <div class="checkbox-list">
+                        <input class="user-checkboxes" type="checkbox" name="userInput" value="lowercase">Lowercase<br>
+                        <input class="user-checkboxes" type="checkbox" name="userInput" value="uppercase">Uppercase<br>
+                        <input class="user-checkboxes" type="checkbox" name="userInput" value="numeric">Numeric<br>
+                        <input class="user-checkboxes" type="checkbox" name="userInput" value="specialCharacters">Special Characters<br>
+                    </div>
+                    <div class="text-entry">
+                        <label for="numOfCharacters"># of Characters:</label>
+                        <input id="passwordLength" type="number" name="userInput" type="number" min="8" max="128" step="1" placeholder="8 - 128 characters" required>
+                    </div>
+                </div>
+
             </div>
 
             <div class="card-body">

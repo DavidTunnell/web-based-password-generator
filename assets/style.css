@@ -1,8 +1,13 @@
+/* Global */
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
+
+
+/* Elements */
 
 html,
 body,
@@ -17,6 +22,15 @@ body {
     background-color: #f9fbfd;
 }
 
+h2 {
+    margin-bottom: 8px;
+}
+
+input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+}
+
 .wrapper {
     padding-top: 30px;
     padding-left: 20px;
@@ -29,6 +43,14 @@ header {
     padding-top: 0px;
     color: hsl(206, 17%, 28%);
 }
+
+button[disabled] {
+    cursor: default;
+    background: #c0c7cf;
+}
+
+
+/* Classes */
 
 .card {
     background-color: hsl(0, 0%, 100%);
@@ -87,14 +109,25 @@ header {
     cursor: pointer;
 }
 
-button[disabled] {
-    cursor: default;
-    background: #c0c7cf;
-}
-
 .float-right {
     float: right;
 }
+
+.user-checkboxes {
+    margin: 7px;
+}
+
+.user-entry {
+    display: flex;
+}
+
+.text-entry {
+    flex-grow: 1;
+    margin-left: 30px;
+}
+
+
+/* IDs */
 
 #password {
     -webkit-appearance: none;
@@ -117,6 +150,20 @@ button[disabled] {
     overflow: hidden;
 }
 
+#passwordLength {
+    height: 25px;
+    width: 40%;
+    padding: 12px 20px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* Media Queries */
+
 @media (max-width: 690px) {
     .btn {
         font-size: 1rem;
@@ -135,5 +182,11 @@ button[disabled] {
     h2 {
         font-size: 20px;
         text-align: center;
+    }
+    .user-entry {
+        flex-direction: column;
+    }
+    .user-checkboxes {
+        margin: 0px;
     }
 }
